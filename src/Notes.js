@@ -5,7 +5,7 @@ import { Space, Table, Popconfirm, Button, Form, Input } from "antd";
 const { Search } = Input;
 
 const dataUrl =
-  "http://node-env.eba-pmwsm7yv.ap-southeast-1.elasticbeanstalk.com/api/note";
+  "http://notetaking-env.eba-cfpxsytp.ap-southeast-1.elasticbeanstalk.com/api/note";
 
 const fetchData = async () => {
   const res = await axios({
@@ -71,7 +71,7 @@ const Notes = () => {
       },
     });
     const newNote = response.data;
-    const updatedNotes = notes.map(note => note._id == id ? newNote : note)
+    const updatedNotes = notes.map(note => note._id === id ? newNote : note)
     setNotes(updatedNotes)
   };
 
@@ -102,7 +102,7 @@ const Notes = () => {
       render: (_id, record) => (
         <Space size="middle">
           <Search
-            placeholder="enter new note"
+            placeholder="update note"
             onSearch={(value) => onSearch(value, record._id,)}
             style={{
               width: 200,
@@ -159,7 +159,5 @@ const Notes = () => {
     </div>
   );
 };
-
-fetchData();
 
 export default Notes;
